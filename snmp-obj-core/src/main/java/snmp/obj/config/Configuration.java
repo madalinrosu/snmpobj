@@ -33,6 +33,7 @@ import snmp.obj.notification.Notification;
 import snmp.obj.notification.SNMPNotificationListener;
 import snmp.obj.notification.SNMPTrapd;
 import snmp.obj.notification.Trap;
+import snmp.obj.proxy.BytecodeProvider;
 import snmp.obj.proxy.ManagedObjectProxyFactory;
 import snmp.obj.proxy.TableProxyFactory;
 import snmp.obj.proxy.TableProxyFactoryImpl;
@@ -197,7 +198,8 @@ public abstract class Configuration implements Serializable {
 		return new SNMPSessionFactory (){
 
 			DefaultSNMPSessionFactory delegatedFactory = createDelegatedFactory(properties.getProperty("snmp.obj.sessionFactory"));
-			ManagedObjectProxyFactory proxyFactory = createProxyFactory(properties.getProperty("snmp.obj.bytecodeProvider"));
+			ManagedObjectProxyFactory proxyFactory = createProxyFactory(properties.getProperty("snmp.obj.bytecodeProvider", 
+																								BytecodeProvider.defaultValue().name()));
 			TableProxyFactory tableProxyFactory = createTableProxyFactory();
 			
 			private DefaultSNMPSessionFactory createDelegatedFactory(String className) throws Exception {
