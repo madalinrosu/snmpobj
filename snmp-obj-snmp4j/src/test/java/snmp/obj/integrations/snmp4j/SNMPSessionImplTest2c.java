@@ -15,7 +15,7 @@ import snmp.obj.SNMPSessionFactory;
 import snmp.obj.config.AnnotationConfiguration;
 import snmp.obj.integrations.snmp4j.util.log.Slf4jLoggerFactory;
 import snmp.obj.mib.standard.c.rfc1213mib.IfEntry;
-import snmp.obj.test.agent.SNMPTestAgent;
+import snmp.obj.test.agent.SNMPSimpleTestAgent;
 import snmp.obj.util.SNMPObjUtil;
 
 
@@ -29,14 +29,14 @@ public class SNMPSessionImplTest2c {
 	SNMPSessionFactory sessionFactory;
 	SNMPSession session;
 	
-	static SNMPTestAgent agent;
+	static SNMPSimpleTestAgent agent;
 
 	static Class<?>[] classes = { snmp.obj.mib.standard.c.rfc1213mib.System.class, 
 		snmp.obj.mib.standard.c.rfc1213mib.IfEntry.class };
 
 	@BeforeClass
 	public static void createAgent() throws Exception {
-		agent = new SNMPTestAgent();
+		agent = new SNMPSimpleTestAgent();
 		agent.start();
 	}
 	

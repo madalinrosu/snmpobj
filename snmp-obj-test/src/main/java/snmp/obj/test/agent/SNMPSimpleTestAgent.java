@@ -11,19 +11,19 @@ import org.snmp4j.agent.io.ImportModes;
 import org.snmp4j.agent.test.TestAgent;
 import org.snmp4j.smi.OctetString;
 
-public class SNMPTestAgent extends TestAgent {
+public class SNMPSimpleTestAgent extends TestAgent {
 
 	private ExecutorService executor = Executors.newSingleThreadExecutor();
 	
 	private Future<?> task;
 
-	public SNMPTestAgent() throws Exception {
+	public SNMPSimpleTestAgent() throws Exception {
 		this("127.0.0.1/10161");
 	}
 
-	public SNMPTestAgent(String address) throws Exception {
-		super(new File(SNMPTestAgent.class.getResource("/SNMP4JTestAgentBC.cfg").toURI()), 
-				new File(SNMPTestAgent.class.getResource("/SNMP4JTestAgentConfig.cfg").toURI()));
+	public SNMPSimpleTestAgent(String address) throws Exception {
+		super(new File(SNMPSimpleTestAgent.class.getResource("/SNMP4JTestAgent.bc").toURI()), 
+				new File(SNMPSimpleTestAgent.class.getResource("/SNMP4JTestAgent.cfg").toURI()));
 		super.address = address;
 	}
 	

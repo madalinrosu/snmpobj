@@ -2,7 +2,11 @@ package snmp.obj.test.agent;
 
 public class SNMPAgentFactory {
 
-	public SNMPTestAgent createTestAgent() throws Exception {
-		return new SNMPTestAgent();
+	public SNMPSimpleTestAgent createSimpleAgent() throws Exception {
+		return new SNMPSimpleTestAgent();
+	}
+	
+	public SNMPConfigurableTestAgent createConfigurableAgent() throws Exception {
+		return new SNMPConfigurableTestAgent();
 	}
 }

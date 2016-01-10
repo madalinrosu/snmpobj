@@ -7,7 +7,6 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.snmp4j.log.LogFactory;
 
@@ -16,7 +15,7 @@ import snmp.obj.SNMPSessionFactory;
 import snmp.obj.config.AnnotationConfiguration;
 import snmp.obj.integrations.snmp4j.util.log.Slf4jLoggerFactory;
 import snmp.obj.mib.standard.i.rfc1213mib.IfEntry;
-import snmp.obj.test.agent.SNMPTestAgent;
+import snmp.obj.test.agent.SNMPConfigurableTestAgent;
 import snmp.obj.util.SNMPObjUtil;
 
 
@@ -30,24 +29,25 @@ public class SNMPSessionImplTest2i {
 	SNMPSessionFactory sessionFactory;
 	SNMPSession session;
 	
-	static SNMPTestAgent agent;
+	static SNMPConfigurableTestAgent agent;
 
 	static Class<?>[] classes = { snmp.obj.mib.standard.i.rfc1213mib.System.class, 
 									snmp.obj.mib.standard.i.rfc1213mib.IfEntry.class };
 	
 	@BeforeClass
 	public static void createAgent() throws Exception {
-		agent = new SNMPTestAgent();
+		agent = new SNMPConfigurableTestAgent();
 		agent.start();
 	}
 	
 	@AfterClass
 	public static void releaseAgent() throws Exception {
 		if(agent != null) {
-			agent.stop();
-			agent= null;
+			//agent.stop();
+			agent = null;
 		}
 	}
+	
 	@Before
 	public void setUp() {
 		AnnotationConfiguration cfg = new AnnotationConfiguration();
