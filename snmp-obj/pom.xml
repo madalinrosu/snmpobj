@@ -7,6 +7,15 @@
 	<packaging>pom</packaging>
 	<name>SNMP Objects Umbrella</name>
 
+	<modules>
+		<module>../snmp-obj-core</module>
+		<module>../snmp-obj-test</module>
+		<module>../snmp-obj-tools</module>
+		<module>../snmp-obj-maven-plugin</module>
+		<module>../snmp-obj-mib-std</module>
+		<module>../snmp-obj-snmp4j</module>
+	</modules>
+	
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
