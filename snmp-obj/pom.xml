@@ -15,7 +15,7 @@
 		<module>../snmp-obj-mib-std</module>
 		<module>../snmp-obj-snmp4j</module>
 	</modules>
-	
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -38,13 +38,13 @@
 
 			<!-- SNMP -->
 			<dependency>
-				<groupId>webnms.snmpapi</groupId>
+				<groupId>com.webnms.snmpapi</groupId>
 				<artifactId>AdventNetSnmp</artifactId>
 				<version>4.0.0</version>
 			</dependency>
 
 			<dependency>
-				<groupId>webnms.snmpapi</groupId>
+				<groupId>com.webnms.snmpapi</groupId>
 				<artifactId>AdventNetLogging</artifactId>
 				<version>4.0.0</version>
 			</dependency>
@@ -116,6 +116,13 @@
 		</dependencies>
 	</dependencyManagement>
 
-
+	<repositories>
+		<repository>
+			<id>oosnmpRepo</id>
+			<name>oosnmp.com Repository</name>
+			<url>https://oosnmp.net/dist/release</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
 
 </project>

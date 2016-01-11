@@ -13,12 +13,12 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>webnms.snmpapi</groupId>
+			<groupId>com.webnms.snmpapi</groupId>
 			<artifactId>AdventNetSnmp</artifactId>
 		</dependency>
 
 		<dependency>
-			<groupId>webnms.snmpapi</groupId>
+			<groupId>com.webnms.snmpapi</groupId>
 			<artifactId>AdventNetLogging</artifactId>
 		</dependency>
 

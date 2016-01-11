@@ -7,7 +7,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>snmp-obj-snmp4j</artifactId>
-	<name>SNMP4J integration</name>
+	<name>SNMP Objects SNMP4J integration</name>
 
 	<dependencies>
 		<dependency>
