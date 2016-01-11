@@ -3,7 +3,6 @@ package snmp.obj.test.agent;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,13 +23,13 @@ public class SNMPConfigurableTestAgent extends SampleAgent {
 		this(defaultConfig());
 	}
 
-	public SNMPConfigurableTestAgent(Map<String, List> cfg) throws Exception {
-		super(cfg);
+	@SuppressWarnings("unchecked")
+	public SNMPConfigurableTestAgent(Map<String, List<?>> cfg) throws Exception {
+		super(Map.class.cast(cfg));
 	}
 	
-	@SuppressWarnings("rawtypes")
-	private static Map<String, List> defaultConfig() throws IOException {
-		Map<String, List> cfg = new HashMap<>();
+	private static Map<String, List<?>> defaultConfig() throws IOException {
+		Map<String, List<?>> cfg = new HashMap<>();
 		cfg.put("c", Arrays.asList(File.createTempFile("SampleAgent", "cfg").getAbsolutePath()));
 		cfg.put("bc", Arrays.asList(File.createTempFile("SampleAgent", "bc").getAbsolutePath()));
 		cfg.put("tls-version", Arrays.asList("TLSv1"));
