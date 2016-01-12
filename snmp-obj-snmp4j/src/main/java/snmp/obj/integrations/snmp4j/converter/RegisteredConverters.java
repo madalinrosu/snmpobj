@@ -47,6 +47,7 @@ public final class RegisteredConverters {
 	}
 
 	public static <T extends Variable> SNMPTypeConverter<?,T> getConverter(Syntax syntax, Class<?> type) {
+		@SuppressWarnings("unchecked")
 		SNMPTypeConverter<?,T> converter = (SNMPTypeConverter<?, T>) SNMPTypeConverterRegistry.DEFAULT_REGISTRY.findConverter(syntax, type);
 //		if(converter == null) {
 //			converter = new AnyToString();
