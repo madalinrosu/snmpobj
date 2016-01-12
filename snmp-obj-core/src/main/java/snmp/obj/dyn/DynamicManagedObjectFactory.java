@@ -30,11 +30,12 @@ public final class DynamicManagedObjectFactory {
 		}
 	}	
 	
+	@SuppressWarnings("unchecked")
 	private static <T extends Serializable> T newProxyInstance(Class<T> clazz) {
 
 		try {
 			return (T) Proxy.newProxyInstance(clazz.getClassLoader(), 
-					new Class<?>[] { clazz }, new DynamicManagedObject());
+									new Class<?>[] { clazz }, new DynamicManagedObject());
 		} 
 		catch (Exception e) {
 			throw new ManagedObjectInstanceException("Failed to create new instance for class : " + clazz.getName(), e);
