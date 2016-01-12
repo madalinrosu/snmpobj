@@ -1,18 +1,13 @@
 package snmp.obj.config;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import snmp.obj.mib.annotations.MIBObjectGroup;
 import snmp.obj.mib.annotations.MIBScalarGroup;
-import snmp.obj.mib.annotations.MIBSubtree;
-import snmp.obj.mib.annotations.MIBTable;
 import snmp.obj.mib.annotations.MIBTableEntry;
-import snmp.obj.mib.annotations.MIBVariable;
 
+@SuppressWarnings("serial")
 public class AnnotationConfiguration extends Configuration {
 
 	// managed objects type cache
@@ -26,6 +21,7 @@ public class AnnotationConfiguration extends Configuration {
 		return this;
 	}
 
+	@SuppressWarnings("unused")
 	private void processClass(Class<?> clazz) throws Exception {
 		
 		MIBScalarGroup scalarGroup = clazz.getAnnotation(MIBScalarGroup.class);

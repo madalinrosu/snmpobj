@@ -5,13 +5,13 @@ import java.util.Map;
 
 import snmp.obj.config.Configuration;
 import snmp.obj.mib.Syntax;
-import snmp.obj.mib.annotations.MIBScalarGroup;
 import snmp.obj.mib.annotations.MIBTableEntry;
 import snmp.obj.mib.annotations.MIBTableIndex;
 import snmp.obj.mib.annotations.MIBVariable;
 import snmp.obj.proxy.ManagedObjectProxyFactory;
 import snmp.obj.proxy.TableProxyFactory;
 
+@SuppressWarnings("serial")
 public abstract class SNMPSessionSupport implements SNMPSession {
 
 	protected final Configuration configuration;

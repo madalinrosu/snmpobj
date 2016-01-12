@@ -7,19 +7,16 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.snmp4j.log.Log4jLogFactory;
 import org.snmp4j.log.LogFactory;
 
 import snmp.obj.SNMPSession;
 import snmp.obj.SNMPSessionFactory;
 import snmp.obj.config.AnnotationConfiguration;
-import snmp.obj.config.PropertyAccessor;
 import snmp.obj.integrations.snmp4j.util.log.Slf4jLoggerFactory;
 import snmp.obj.mib.standard.rfc1213.IfEntry;
 import snmp.obj.mib.standard.rfc1213.Interfaces;
 import snmp.obj.mib.standard.rfc1213.Mib2;
 import snmp.obj.mib.standard.usm.UsmUserEntry;
-import snmp.obj.util.MIBObjectToString;
 import snmp.obj.util.SNMPObjUtil;
 
 @Ignore

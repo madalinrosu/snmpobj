@@ -32,7 +32,7 @@ public class MIBCompiler {
 	private static String asn1 = null;
 	private static boolean generateInterfaces = true;
 	private static boolean annotateFields = true;
-	private static boolean flatHierarchy = false;
+//	private static boolean flatHierarchy = false;
 	private static boolean nestedEnums = true;
 	
 
@@ -228,6 +228,7 @@ public class MIBCompiler {
 //		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	static void parseMib(MibModule mibModule) {
 		System.out.println("Parsing ... " + mibModule.getName());
         // resolve textual conventions
@@ -261,7 +262,7 @@ public class MIBCompiler {
         
         // groups
 		System.out.println("Defined Object Groups: ");
-        Enumeration objectGroups = mibModule.getDefinedObjectGroups();
+        Enumeration<?> objectGroups = mibModule.getDefinedObjectGroups();
         while(objectGroups.hasMoreElements()) {
         	Object objectGroup = objectGroups.nextElement();
 			System.out.println(String.format("%s", objectGroup));
