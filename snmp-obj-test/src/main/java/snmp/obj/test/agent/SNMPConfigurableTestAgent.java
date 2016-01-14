@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.snmp4j.agent.example.SampleAgent;
 
-public class SNMPConfigurableTestAgent extends SampleAgent {
+public class SNMPConfigurableTestAgent extends SampleAgent implements SNMPTestAgent {
 
 	private ExecutorService executor = Executors.newSingleThreadExecutor();
 	
@@ -37,6 +37,7 @@ public class SNMPConfigurableTestAgent extends SampleAgent {
 		return cfg;
 	}
 	
+	@Override
 	public void start() throws IOException {
 		task = executor.submit(new Runnable(){
 
@@ -48,6 +49,7 @@ public class SNMPConfigurableTestAgent extends SampleAgent {
 		});
 	}
 
+	@Override
 	public void stop() {
 		if(task != null) {
 //			agent.shutdown();

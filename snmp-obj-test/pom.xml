@@ -11,6 +11,12 @@
   	<dependencies>
 		
 		<dependency>
+			<groupId>snmp-obj</groupId>
+			<artifactId>snmp-obj-core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.snmp4j</groupId>
 			<artifactId>snmp4j-agent</artifactId>
 		</dependency>

@@ -11,7 +11,7 @@ import org.snmp4j.agent.io.ImportModes;
 import org.snmp4j.agent.test.TestAgent;
 import org.snmp4j.smi.OctetString;
 
-public class SNMPSimpleTestAgent extends TestAgent {
+public class SNMPSimpleTestAgent extends TestAgent implements SNMPTestAgent {
 
 	private ExecutorService executor = Executors.newSingleThreadExecutor();
 	
@@ -37,6 +37,7 @@ public class SNMPSimpleTestAgent extends TestAgent {
 	}
 
 	
+	@Override
 	public void start() throws IOException {
 		init();
 		task = executor.submit(this);
