@@ -1,5 +1,6 @@
 package snmp.obj.test.support;
 
+import java.io.IOException;
 import java.util.Properties;
 
 import org.junit.AfterClass;
@@ -38,14 +39,16 @@ public abstract class SNMPIntegrationTestSupport {
 	public void setUp() {
 		try {
 			AnnotationConfiguration cfg = new AnnotationConfiguration();
-			SNMPSessionFactory sessionFactory = cfg.setProperties(getProperties()).processAnnotations(getClasses()).buildSessionFactory();
+			Properties properties = getProperties();
+			properties.list(System.out);
+			SNMPSessionFactory sessionFactory = cfg.setProperties(properties).processAnnotations(getClasses()).buildSessionFactory();
 			session = sessionFactory.createSNMPv2cSession("127.0.0.1", "public", 10161, 2, 5000);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	protected abstract Properties getProperties();
+	protected abstract Properties getProperties() throws IOException;
 	
 	protected abstract Class<?>[] getClasses();
 

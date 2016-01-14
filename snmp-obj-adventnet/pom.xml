@@ -37,6 +37,13 @@
 		</dependency>
 
 		<dependency>
+			<groupId>snmp-obj</groupId>
+			<artifactId>snmp-obj-test</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
