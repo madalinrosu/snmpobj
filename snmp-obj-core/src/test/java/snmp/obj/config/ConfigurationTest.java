@@ -2,11 +2,12 @@ package snmp.obj.config;
 
 
 
-import org.junit.Assert;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
-@Ignore
+@Disabled
 public class ConfigurationTest {
 
 	@Test
@@ -17,17 +18,22 @@ public class ConfigurationTest {
 		
 		PropertyAccessor accessor1 = cfg.getPropertyAccessor("1.3.6.1.2.1.1.1");
 		PropertyAccessor accessor2 = cfg.getPropertyAccessor("1.3.6.1.2.1.1.2");
-		Assert.assertNotNull(accessor1);
-		Assert.assertNotNull(accessor2);
-		Assert.assertTrue(accessor1 instanceof FieldLevelAccessor);
-		Assert.assertTrue(accessor2 instanceof MethodLevelAccessor);
+		Assertions.assertNotNull(accessor1);
+		Assertions.assertNotNull(accessor2);
+		Assertions.assertTrue(accessor1 instanceof FieldLevelAccessor);
+		Assertions.assertTrue(accessor2 instanceof MethodLevelAccessor);
 	}
 
-	@Test(expected = DuplicateObjectException.class)
+	@Test//(expected = DuplicateObjectException.class)
 	public void shouldNotProcessAnnotations() throws Exception {
-		AnnotationConfiguration cfg = new AnnotationConfiguration();
+		final AnnotationConfiguration cfg = new AnnotationConfiguration();
 		
-		cfg.processAnnotations(ManagedObject2.class);
+		Assertions.assertThrows(DuplicateObjectException.class, new Executable() {
+			@Override
+			public void execute() throws Throwable {
+				cfg.processAnnotations(ManagedObject2.class);
+			}
+		});
 	}
 	
 	@Test
@@ -37,9 +43,9 @@ public class ConfigurationTest {
 		cfg.processAnnotations("snmp.obj.config");
 		PropertyAccessor accessor1 = cfg.getPropertyAccessor("1.3.6.1.2.1.1.1");
 		PropertyAccessor accessor2 = cfg.getPropertyAccessor("1.3.6.1.2.1.1.2");
-		Assert.assertNotNull(accessor1);
-		Assert.assertNotNull(accessor2);
-		Assert.assertTrue(accessor1 instanceof FieldLevelAccessor);
-		Assert.assertTrue(accessor2 instanceof MethodLevelAccessor);
+		Assertions.assertNotNull(accessor1);
+		Assertions.assertNotNull(accessor2);
+		Assertions.assertTrue(accessor1 instanceof FieldLevelAccessor);
+		Assertions.assertTrue(accessor2 instanceof MethodLevelAccessor);
 	}
 }

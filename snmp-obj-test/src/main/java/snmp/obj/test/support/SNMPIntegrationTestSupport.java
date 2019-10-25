@@ -3,9 +3,10 @@ package snmp.obj.test.support;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 
 import snmp.obj.SNMPSession;
 import snmp.obj.SNMPSessionFactory;
@@ -21,13 +22,13 @@ public abstract class SNMPIntegrationTestSupport {
 	private static SNMPSimpleTestAgent agent;
 
 
-	@BeforeClass
+	@BeforeAll
 	public static void createAgent() throws Exception {
 		agent = new SNMPSimpleTestAgent();
 		agent.start();
 	}
 	
-	@AfterClass
+	@AfterAll
 	public static void releaseAgent() throws Exception {
 		if(agent != null) {
 			agent.stop();
@@ -35,7 +36,7 @@ public abstract class SNMPIntegrationTestSupport {
 		}
 	}
 	
-	@Before
+	@BeforeEach
 	public void setUp() {
 		try {
 			AnnotationConfiguration cfg = new AnnotationConfiguration();
@@ -48,12 +49,13 @@ public abstract class SNMPIntegrationTestSupport {
 		}
 	}
 	
+	@AfterEach
+	public void tearDown() {
+	}
+
 	protected abstract Properties getProperties() throws IOException;
 	
 	protected abstract Class<?>[] getClasses();
 
-	@Before
-	public void tearDown() {
-	}
 
 }

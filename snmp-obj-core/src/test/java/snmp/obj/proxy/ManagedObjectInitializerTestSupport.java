@@ -2,10 +2,10 @@ package snmp.obj.proxy;
 
 import java.io.Serializable;
 
-import org.junit.Before;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import snmp.obj.SNMPSession;
 import snmp.obj.mib.annotations.MIBObjectGroup;
@@ -13,7 +13,8 @@ import snmp.obj.mib.annotations.MIBScalarGroup;
 import snmp.obj.mib.annotations.MIBSubtree;
 import snmp.obj.mib.annotations.MIBVariable;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
+//@RunWith(JUnitPlatform.class)
 public abstract class ManagedObjectInitializerTestSupport {
 
 	@Mock
@@ -21,7 +22,7 @@ public abstract class ManagedObjectInitializerTestSupport {
 
 	protected ManagedObjectProxyFactory proxyFactory;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		proxyFactory = createProxyFactory();
 	}

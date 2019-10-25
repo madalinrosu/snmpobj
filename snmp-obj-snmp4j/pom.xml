@@ -41,12 +41,12 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-
+        <!-- junit 5 -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+        </dependency>
+        
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -88,14 +88,6 @@
 
 	</dependencies>
 
-	<repositories>
-		<repository>
-			<id>oosnmpRepo</id>
-			<name>oosnmp.com Repository</name>
-			<url>https://oosnmp.net/dist/release</url>
-			<layout>default</layout>
-		</repository>
-	</repositories>
 	
 	<build>
 		<plugins>

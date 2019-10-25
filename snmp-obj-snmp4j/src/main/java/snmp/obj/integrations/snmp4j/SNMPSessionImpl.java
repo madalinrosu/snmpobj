@@ -198,7 +198,7 @@ public class SNMPSessionImpl extends SNMPSessionSupport {
 			throw new SNMPException("Request timed out.");
 		}
 		if(response.getErrorStatus() != PDU.noError) {
-			Vector<? extends VariableBinding> varbinds = response.getVariableBindings();
+			List<? extends VariableBinding> varbinds = response.getVariableBindings();
 			throw new SNMPException(response.getErrorStatusText() + " - " + varbinds.get(response.getErrorIndex()).getOid());
 		}
 		
@@ -227,7 +227,7 @@ public class SNMPSessionImpl extends SNMPSessionSupport {
 			throw new SNMPException("Request timed out.");
 		}
 		if(response.getErrorStatus() != PDU.noError) {
-			Vector<? extends VariableBinding> varbinds = response.getVariableBindings();
+			List<? extends VariableBinding> varbinds = response.getVariableBindings();
 			throw new SNMPException(response.getErrorStatusText() + " - " + varbinds.get(response.getErrorIndex()).getOid());
 		}
 		

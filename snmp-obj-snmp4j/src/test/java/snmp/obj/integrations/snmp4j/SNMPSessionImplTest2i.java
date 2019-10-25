@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 
-import org.junit.Assert;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.snmp4j.log.LogFactory;
 
 import snmp.obj.integrations.snmp4j.util.log.Slf4jLoggerFactory;
@@ -19,7 +19,6 @@ public class SNMPSessionImplTest2i extends SNMPIntegrationTestSupport {
 
 	static {
 		LogFactory.setLogFactory(new Slf4jLoggerFactory());
-//		LogFactory.setLogFactory(new Log4jLogFactory());
 	}
 
 	static Class<?>[] classes = { snmp.obj.mib.standard.i.rfc1213mib.System.class, 
@@ -43,18 +42,18 @@ public class SNMPSessionImplTest2i extends SNMPIntegrationTestSupport {
 	public void shouldGetMib2System() throws Exception {
 		snmp.obj.mib.standard.i.rfc1213mib.System mo = session.getScalars(snmp.obj.mib.standard.i.rfc1213mib.System.class);
 
-		Assert.assertNotNull(mo);
-		Assert.assertTrue(mo.getSysDescr().startsWith("SNMP4J-Agent"));
-		Assert.assertNotNull(mo.getSysObjectID());
+		Assertions.assertNotNull(mo);
+		Assertions.assertTrue(mo.getSysDescr().startsWith("SNMP4J-Agent"));
+		Assertions.assertNotNull(mo.getSysObjectID());
 
 		System.out.println(SNMPObjUtil.toString(mo));
 	}
 
-	@Ignore
+	@Disabled
 	public void shouldGetMib2IfTable() throws Exception {
 		List<IfEntry> rows = session.getTable(IfEntry.class);
 
-		Assert.assertNotNull(rows);
+		Assertions.assertNotNull(rows);
 
 		for(IfEntry mo : rows) {
 			System.out.println(SNMPObjUtil.toString(mo));

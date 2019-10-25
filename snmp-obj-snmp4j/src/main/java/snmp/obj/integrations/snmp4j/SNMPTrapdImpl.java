@@ -7,7 +7,6 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Vector;
 
 import org.snmp4j.CommandResponder;
 import org.snmp4j.CommandResponderEvent;
@@ -17,7 +16,6 @@ import org.snmp4j.PDUv1;
 import org.snmp4j.Snmp;
 import org.snmp4j.TransportMapping;
 import org.snmp4j.asn1.BER;
-import org.snmp4j.log.Log4jLogFactory;
 import org.snmp4j.log.LogAdapter;
 import org.snmp4j.log.LogFactory;
 import org.snmp4j.mp.MPv1;
@@ -45,6 +43,7 @@ import snmp.obj.config.Configuration;
 import snmp.obj.config.Property;
 import snmp.obj.config.PropertyAccessor;
 import snmp.obj.integrations.snmp4j.converter.RegisteredConverters;
+import snmp.obj.integrations.snmp4j.util.log.Slf4jLoggerFactory;
 import snmp.obj.mib.Syntax;
 import snmp.obj.mib.annotations.MIBNotification;
 import snmp.obj.mib.annotations.MIBNotificationObject;
@@ -59,7 +58,7 @@ import snmp.obj.util.converter.SNMPTypeConverter;
 public class SNMPTrapdImpl extends DefaultSNMPTrapd {
 
 	static {
-		LogFactory.setLogFactory(new Log4jLogFactory());
+		LogFactory.setLogFactory(new Slf4jLoggerFactory());
 		BER.setCheckSequenceLength(false);
 	}
 
@@ -93,7 +92,7 @@ public class SNMPTrapdImpl extends DefaultSNMPTrapd {
 		snmp.addNotificationListener(GenericAddress.parse("udp:0.0.0.0/162"), new CommandResponder() {
 			
 			@Override
-			public void processPdu(CommandResponderEvent event) {
+			public <A extends Address> void processPdu(CommandResponderEvent<A> event) {
 				PDU pdu = event.getPDU();
 				SNMPTrapdImpl.logger.info(pdu.toString());
 				Notification notification = null;
@@ -181,7 +180,7 @@ public class SNMPTrapdImpl extends DefaultSNMPTrapd {
 		return trap;
 	}
 	
-	private void setProperties(final Notification notification, Class<?> clazz, Vector<? extends VariableBinding> variableBindings) throws Exception {
+	private void setProperties(final Notification notification, Class<?> clazz, List<? extends VariableBinding> list) throws Exception {
 		MIBNotification annotation = clazz.getAnnotation(MIBNotification.class);
 
 		List<MIBNotificationObject> objects = new LinkedList<>();
@@ -189,11 +188,11 @@ public class SNMPTrapdImpl extends DefaultSNMPTrapd {
 			objects.addAll(Arrays.asList(annotation.snmpv2()));
 		}
 		objects.addAll(Arrays.asList(annotation.objects()));
-		assert objects.size() == variableBindings.size(); 
+		assert objects.size() == list.size(); 
 		
 		Map<String, Property> properties = configuration.getVariables(annotation);
 		int i = 0;
-		for(VariableBinding vb : variableBindings) {
+		for(VariableBinding vb : list) {
 			if(vb == null) {
 				continue;
 			}
@@ -324,7 +323,7 @@ public class SNMPTrapdImpl extends DefaultSNMPTrapd {
 		    multithreadedtrapreceiver.run();
 		  }
 
-		  public void processPdu(CommandResponderEvent event) {
+		  public <A extends Address> void processPdu(CommandResponderEvent<A> event) {
 		    if (start < 0) {
 		      start = System.currentTimeMillis()-1;
 		    }

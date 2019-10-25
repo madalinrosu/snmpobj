@@ -1,16 +1,10 @@
 package snmp.obj.proxy.jdk;
 
-import java.io.Serializable;
-
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.mockito.BDDMockito;
 
 import snmp.obj.dyn.DynamicManagedObjectFactory;
-import snmp.obj.mib.annotations.MIBObjectGroup;
-import snmp.obj.mib.annotations.MIBScalarGroup;
-import snmp.obj.mib.annotations.MIBSubtree;
-import snmp.obj.mib.annotations.MIBVariable;
 import snmp.obj.proxy.ManagedObjectInitializerTestSupport;
 import snmp.obj.proxy.ManagedObjectProxy;
 
@@ -40,7 +34,7 @@ public class ManagedObjectInitializerImplTest extends ManagedObjectInitializerTe
 		String result = mib2.getSystem().getSysDescr();
 		
 		// then System group should have been initialized
-		Assert.assertEquals(system.getSysDescr(), result);
+		Assertions.assertEquals(system.getSysDescr(), result);
 	}
 	
 	

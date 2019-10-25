@@ -1,7 +1,7 @@
 package snmp.obj.proxy.javassist;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.mockito.BDDMockito;
 
 import snmp.obj.proxy.ManagedObjectInitializerTestSupport;
@@ -33,7 +33,7 @@ public class ManagedObjectInitializerImplTest extends ManagedObjectInitializerTe
 		String result = mib2.getSystem().getSysDescr();
 		
 		// then System group should have been initialized
-		Assert.assertEquals(system.getSysDescr(), result);
+		Assertions.assertEquals(system.getSysDescr(), result);
 	}
 	
 	

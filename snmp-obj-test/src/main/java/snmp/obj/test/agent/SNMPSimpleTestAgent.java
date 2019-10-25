@@ -7,10 +7,11 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
-import org.snmp4j.agent.io.ImportModes;
+import org.snmp4j.agent.io.ImportMode;
 import org.snmp4j.agent.test.TestAgent;
 import org.snmp4j.smi.OctetString;
 
+// TODO: replace TestAgent with AgentConfigManager
 public class SNMPSimpleTestAgent extends TestAgent implements SNMPTestAgent {
 
 	private ExecutorService executor = Executors.newSingleThreadExecutor();
@@ -30,7 +31,7 @@ public class SNMPSimpleTestAgent extends TestAgent implements SNMPTestAgent {
 	@Override
 	public void init() throws IOException {
         super.init();
-        loadConfig(ImportModes.REPLACE_CREATE);
+        loadConfig(ImportMode.REPLACE_CREATE);
         addShutdownHook();
         getServer().addContext(new OctetString("public"));
         finishInit();
