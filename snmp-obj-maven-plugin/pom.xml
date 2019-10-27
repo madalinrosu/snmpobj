@@ -68,26 +68,26 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-plugin-plugin</artifactId>
-				<version>3.4</version>
+				<version>3.6.0</version>
 				<configuration>
 					<!-- see http://jira.codehaus.org/browse/MNG-5346 -->
 					<skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
 				</configuration>
 				<executions>
-					<execution>
-						<id>mojo-descriptor</id>
-						<phase>process-classes</phase>
-						<goals>
-							<goal>descriptor</goal>
-						</goals>
-					</execution>
-					<!-- if you want to generate help goal -->
-					<execution>
-						<id>help-goal</id>
-						<goals>
-							<goal>helpmojo</goal>
-						</goals>
-					</execution>
+                <execution>
+                    <id>default-descriptor</id>
+                    <goals>
+                        <goal>descriptor</goal>
+                    </goals>
+                    <phase>process-classes</phase>
+                </execution>
+                <execution>
+                    <id>help-descriptor</id>
+                    <goals>
+                        <goal>helpmojo</goal>
+                    </goals>
+                    <phase>process-classes</phase>
+                </execution>
 				</executions>
 			</plugin>
 		</plugins>
