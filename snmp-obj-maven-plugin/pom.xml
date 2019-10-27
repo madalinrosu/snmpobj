@@ -5,6 +5,7 @@
 		<groupId>snmp-obj</groupId>
 		<artifactId>snmp-obj</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../snmp-obj</relativePath>
 	</parent>
 	<artifactId>snmp-obj-maven-plugin</artifactId>
 	<name>SNMP Objects Maven Plugin</name>

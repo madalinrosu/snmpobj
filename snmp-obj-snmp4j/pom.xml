@@ -5,6 +5,7 @@
 		<groupId>snmp-obj</groupId>
 		<artifactId>snmp-obj</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../snmp-obj</relativePath>
 	</parent>
 	<artifactId>snmp-obj-snmp4j</artifactId>
 	<name>SNMP Objects SNMP4J integration</name>

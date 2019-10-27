@@ -4,6 +4,7 @@
     <groupId>snmp-obj</groupId>
     <artifactId>snmp-obj</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+		<relativePath>../snmp-obj</relativePath>
   </parent>
   <artifactId>snmp-obj-test</artifactId>
   <name>SNMP Objects test support</name>
